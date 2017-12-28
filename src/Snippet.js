@@ -7,7 +7,7 @@ class Snippet extends Component {
       <div className="Snippet">
         <h6 className="Snippet-title">{this.props.snippet.title}</h6>
         <div className="Snippet-body">{this.props.snippet.snippetBody}</div>
-        <a className="Snippet-link-to-docs" target="_blank" href={this.props.snippet.linkToDocs}>Official Docs</a>
+        <a className="Snippet-link-to-docs" target="_blank" href={'http://' + this.props.snippet.linkdocs}>Official Docs</a>
       </div>
     );
   }
