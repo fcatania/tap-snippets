@@ -1,4 +1,7 @@
 const Promise = require('bluebird');
+const dbController = require('./db/dbController');
 
-let get = () => {
+exports.get = () => {
+  console.log('getting snippets');
+  return dbController.getSnippets();
 }
