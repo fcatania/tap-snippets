@@ -120,20 +120,25 @@ fetch('someURL').then((response) => {
 ]
 
 let createSnippets = (arrayOfSnippets) => {
-  arrayOfSnippets.forEach((val, index) => {
+  arrayOfSnippets.forEach((snippet, index) => {
     coreSnippet = {
-      title: val.title, 
-      linkdocs: val.linkdocs,
-      snippetBody: val.snippetBody
+      title: snippet.title, 
+      linkdocs: snippet.linkdocs,
+      snippetBody: snippet.snippetBody
     }
-    dbConnection.Snippet.create(coreSnippet).then((snippet) => {
-      let tags = _createTagObjs(val.tags);
-      let tips = _createTipObjs(val.tips);
-      tags.forEach(val => {
-        snippet.createTag(val);
-      });
+    dbConnection.Snippet.create(coreSnippet).then((storedSnippet) => {
+      let tags = _createTagObjs(snippet.tags);
+      let tips = _createTipObjs(snippet.tips);
+
+      tags.forEach(tag => {
+        dbConnection.Tag.findOrCreate({where: {name: tag.name}})
+        .spread((storedTag, created) => {
+          console.log('HEREEEEEEEEEEEEE');
+          storedSnippet.addTag(storedTag);
+        }); 
+      });      
       tips.forEach(val => {
-        snippet.createTip(val);
+        storedSnippet.createTip(val);
       });
     });
   });

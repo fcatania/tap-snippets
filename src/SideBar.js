@@ -5,9 +5,9 @@ class SideBar extends Component {
   render() {
     return (
       <div className="SideBar">
-        <a>React</a>
-        <a>Angularjs</a>
-        <a>Sequelize</a>
+        {this.props.snippets.map((snippet, index) => {
+          return <a key={index} onClick={() => {this.props.clickHandler(index)}}>{snippet.title}</a>;
+        })}
       </div>
     );
   }
