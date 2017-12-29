@@ -9,7 +9,7 @@ class App extends Component {
     super(props);
     this.state = {
       allSnippets: [],
-      currentSnippet: {title: 'Some Title', linkdocs: 'https://reactjs.org', snippetBody: 'var culo = sucio;'}
+      currentSnippet: {}
     };
     this.sideBarClickHandler = this.sideBarClickHandler.bind(this);
   }

@@ -25,3 +25,7 @@
   display: block;
   text-align: left;
 }
+
+.Snippet-copy-button {
+  float: right;
+}
