@@ -1,6 +1,6 @@
 const db = require('./connection');
 
-exports.getSnippets = () => {
+exports.getSnippets = (techId) => {
   return db.Snippet.findAll({
     include: [{
         model: db.Tag,
@@ -12,7 +12,10 @@ exports.getSnippets = () => {
       through: {
         attributes: ['text']
       }
-    }]
+    }],
+    where: {
+      technologyId: techId
+    }
   }).catch((err) => {
     console.log(err);
   }).then((result) => {
