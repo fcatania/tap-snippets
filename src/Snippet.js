@@ -4,8 +4,8 @@ import Clipboard from 'clipboard';
 
 class Snippet extends Component {
   constructor(props) {
-    new Clipboard('.clipboard-button'); 
     super(props);
+    new Clipboard('.clipboard-button'); 
   }
 
   render() {
@@ -13,11 +13,11 @@ class Snippet extends Component {
       <div className="Snippet">
         <h6 className="Snippet-title">{this.props.snippet.title}</h6>
         <div className="Snippet-body">
-          <span id="snippetBody">{this.props.snippet.snippetBody}</span>
           <button className="Snippet-copy-button clipboard-button" data-clipboard-target="#snippetBody">COPY</button>
+          <pre><code id="snippetBody">{this.props.snippet.snippetBody}</code></pre>
         </div>
         
-        <a className="Snippet-link-to-docs" target="_blank" href={'http://' + this.props.snippet.linkdocs}>Official Docs</a>
+        <a className="Snippet-link-to-docs" target="_blank" href={this.props.snippet.linkdocs}>Official Docs</a>
       </div>
     );
   }

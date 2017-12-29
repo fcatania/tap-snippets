@@ -19,6 +19,8 @@
   outline-style: solid;
   background: rgb(238, 238, 238);
   margin-bottom: 22px;
+  text-align: left;
+  padding: 12px;
 }
 
 .Snippet-link-to-docs {
