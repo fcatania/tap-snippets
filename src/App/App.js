@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import SideBar from './SideBar.js';
-import Snippet from './Snippet.js';
+import SideBar from '../SideBar/SideBar';
+import Snippet from '../Snippet/Snippet';
 import 'whatwg-fetch';
 
 class App extends Component {
