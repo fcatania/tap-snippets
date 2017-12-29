@@ -15,15 +15,19 @@ let Tip = db.define('tip', {
 });
 
 let Tag = db.define('tag', {
-  name: Sequelize.STRING
+  name: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    primaryKey: true
+  }
 });
 
 Snippet.belongsToMany(Tip, {through: 'snippet_tip'});
 Snippet.belongsToMany(Tag, {through: 'snippet_tag'});
 Tip.belongsToMany(Snippet, {through: 'snippet_tip'});
-Tag.belongsToMany(Snippet, {through: 'snippet_tag'});
+Tag.belongsToMany(Snippet, {through: 'snippet_tag', foreignKey: 'name'});
 
-// db.sync({force: true});
+db.sync();
 
 exports.Snippet = Snippet;
 exports.Tip = Tip;
