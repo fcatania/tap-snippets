@@ -17,7 +17,7 @@ class Snippet extends Component {
           <button className="Snippet-copy-button clipboard-button" data-clipboard-target="#snippetBody">COPY</button>
         </div>
         
-        <a className="Snippet-link-to-docs" target="_blank" href={'http://' + this.props.snippet.linkdocs}>Official Docs</a>
+        <a className="Snippet-link-to-docs" target="_blank" href={this.props.snippet.linkdocs}>Official Docs</a>
       </div>
     );
   }

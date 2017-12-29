@@ -15,15 +15,22 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('https://655950f8-b131-4619-b207-078ebfc65b8e.mock.pstmn.io/snippets/react/').then((response) => {
-      return response.json();
+    fetch('http://127.0.0.1:8080/snippets/react/').then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error('Connection to server failed.');
+      }
     }).then((json) => {
-      this.setState({allSnippets: json.snippets.react, currentSnippet: json.snippets.react[0]});
+      if (json.snippets.react.length > 0) {
+        this.setState({allSnippets: json.snippets.react, currentSnippet: json.snippets.react[0]});
+      } else {
+        console.log('Empty DB');
+      }
     });
   }
 
   sideBarClickHandler(index) {
-    console.log(index);
     this.setState({currentSnippet: this.state.allSnippets[index]});
   }
 
