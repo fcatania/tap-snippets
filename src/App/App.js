@@ -3,13 +3,15 @@ import './App.css';
 import SideBar from '../SideBar/SideBar';
 import Snippet from '../Snippet/Snippet';
 import 'whatwg-fetch';
+import AddSnippet from '../AddSnippet/AddSnippet';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       allSnippets: [],
-      currentSnippet: {}
+      currentSnippet: {},
+      addNewSnippetPage: false
     };
     this.sideBarClickHandler = this.sideBarClickHandler.bind(this);
   }
@@ -37,8 +39,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <button className="add-snippet" onClick={() => this.setState({addNewSnippetPage: !this.state.addNewSnippetPage})}>Add Snippet</button>
         <SideBar snippets={this.state.allSnippets} clickHandler={this.sideBarClickHandler}/>
-        <Snippet snippet={this.state.currentSnippet}/>
+
+        {this.state.addNewSnippetPage ? <AddSnippet/> : <Snippet snippet={this.state.currentSnippet}/>}
       </div>
     );
   }

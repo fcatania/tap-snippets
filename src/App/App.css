@@ -17,3 +17,7 @@
   font-size: large;
 }
 
+.add-snippet {
+  float: right;
+  margin: 20px;
+}
