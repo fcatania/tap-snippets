@@ -19,10 +19,10 @@ exports.post = (req, res, techId) => {
       JSONSnippet += chunk;
     });
     req.on('end', () => {
-      if(!JSONSnippet) {
-        reject('err');
+      snippetObj = JSON.parse(JSONSnippet);
+      if(!_isSnippetValid(snippetObj)) {
+        reject({ err: 'Wrong snippet structure.'});
       } else {
-        snippetObj = JSON.parse(JSONSnippet);
         snippetObj.technologyId = techId;
         dbController.addSnippet(snippetObj).then((savedSnippet) => {
           resolve(savedSnippet);
@@ -30,4 +30,25 @@ exports.post = (req, res, techId) => {
       }
     });
   })
+}
+
+_isSnippetValid = (sentSnippet) => {
+
+  let testObj = {
+    title: 'someething',
+    snippetBody: 'a body',
+    linkdocs: 'www.google.com',
+    tags: [],
+    tips: []
+  }
+  if(Object.keys(testObj).length !== Object.keys(sentSnippet).length) {
+    return false;
+  }
+
+  for(key in testObj) {
+    if(sentSnippet[key] === undefined) {
+      return false;
+    }
+  }
+  return true;
 }

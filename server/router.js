@@ -27,6 +27,8 @@ router.post('/:tech', (req, res) => {
   if(!needToSendErrorResponse(tech, res)) {
     controller.post(req, res, availableTechs[tech]).then((newSnippet) => {
       res.status(201).json(newSnippet);
+    }).catch((err) => {
+      res.status(500).json(err);
     });
   }
 });
