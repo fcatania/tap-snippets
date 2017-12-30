@@ -1,3 +1,27 @@
 #save-snippet {
   font-size: 20px;
 }
+
+#snippet-body {
+  font-family: monospace;
+  width: 30%;
+}
+
+
+#add-container {
+  clear: right;
+}
+
+#add-container input {
+  width: 30%;
+}
+
+#textarea {
+  width: 30%;
+  margin-left: 65px;
+}
+
+#tick-img {
+  width: 1%;
+  margin-right: 10px;
+}

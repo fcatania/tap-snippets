@@ -9,12 +9,12 @@ let TextAdder = ({name, addFunc, list}) => {
   };
 
   return (
-    <div>
+    <div className="text-adder">
       <h6>{name}</h6>
       <textarea id="textarea" rows="4" cols="50" ref={(n) => {node = n}} onKeyPress={onEnterKey}></textarea>
       <button onClick={() => addFunc(node)}>{`Add ${name}`}</button>
       <ul>
-        {list.map((item, index) => <li key={index}>{item}</li>)}
+        {list.map((item, index) => <li key={index}><img id="tick-img" alt="." src="/images/green_tick.png"/>{item}</li>)}
       </ul>
     </div>
     );

@@ -50,7 +50,7 @@ class AddSnippet extends Component {
 
   render() {
     return (
-      <div>
+      <div id="add-container">
         <h6>Snippet Title</h6>
         <input ref={(node) => this.titleNode = node}/>
         <h6>Snippet Body</h6>
