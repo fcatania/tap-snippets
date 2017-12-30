@@ -11,3 +11,23 @@ exports.get = (techId) => {
     }
   });
 }
+
+exports.post = (req, res, techId) => {
+  return new Promise((resolve, reject) => {
+    let JSONSnippet = '';
+    req.on('data', (chunk) => {
+      JSONSnippet += chunk;
+    });
+    req.on('end', () => {
+      if(!JSONSnippet) {
+        reject('err');
+      } else {
+        snippetObj = JSON.parse(JSONSnippet);
+        snippetObj.technologyId = techId;
+        dbController.addSnippet(snippetObj).then((savedSnippet) => {
+          resolve(savedSnippet);
+        });
+      }
+    });
+  })
+}

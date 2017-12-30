@@ -32,7 +32,42 @@ exports.getSnippets = (techId) => {
       });
       return cleanObj;
     });
-    console.log(snippets);
+    console.log('THE SNIPPETS', snippets);
     return snippets;
+  });
+}
+
+exports.addSnippet = (snippet) => {
+  console.log('ADDDDDD SNIP', snippet);
+  return db.Snippet.create(snippet).then((storedSnippet) => {
+    let tags = _createTagObjs(snippet.tags);
+    let tips = _createTipObjs(snippet.tips);
+    tags.forEach(tag => {
+      db.Tag.findOrCreate({where: {name: tag.name}})
+      .spread((storedTag, created) => {
+        storedSnippet.addTag(storedTag);
+      }); 
+    });      
+    tips.forEach(val => {
+      storedSnippet.createTip(val);
+    });
+    return storedSnippet;
+  });
+}
+
+
+let _createTagObjs = (arrayOfTags) => {
+  return arrayOfTags.map((val) => {
+    return {
+      name: val
+    }
+  });
+}
+
+let _createTipObjs = (arrayOfTags) => {
+  return arrayOfTags.map((val) => {
+    return {
+      text: val
+    }
   });
 }

@@ -24,6 +24,7 @@ class App extends Component {
         throw new Error('Connection to server failed.');
       }
     }).then((json) => {
+      console.log(json);
       if (json.snippets.react.length > 0) {
         this.setState({allSnippets: json.snippets.react, currentSnippet: json.snippets.react[0]});
       } else {
