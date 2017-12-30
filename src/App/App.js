@@ -3,6 +3,7 @@ import './App.css';
 import SideBar from '../SideBar/SideBar';
 import Snippet from '../Snippet/Snippet';
 import 'whatwg-fetch';
+import LoginScreen from '../LoginScreen/LoginScreen';
 
 class App extends Component {
   constructor(props) {
@@ -37,6 +38,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <LoginScreen/>
         <SideBar snippets={this.state.allSnippets} clickHandler={this.sideBarClickHandler}/>
         <Snippet snippet={this.state.currentSnippet}/>
       </div>
