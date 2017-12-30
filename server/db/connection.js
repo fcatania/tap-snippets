@@ -34,16 +34,11 @@ Tag.belongsToMany(Snippet, {through: 'snippet_tag', foreignKey: 'name'});
 Technology.hasMany(Snippet);
 db.sync();
 
-Technology.create({
-  name: 'react',
-  isFrontEnd: true
-}).then((react) => {
-  react.createSnippet({
-    title: 'atitle',
-    snippetBody: 'the body>',
-    linkdocs: 'www.google.com'
-  });
-});
+//used to create react once
+// Technology.create({
+//   name: 'react',
+//   isFrontEnd: true
+// }).then(() => console.log('tech created'));
 
 exports.Snippet = Snippet;
 exports.Tip = Tip;
