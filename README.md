@@ -1,4 +1,5 @@
 ## Snippet-based Documentation Project.
+Contributors: blam92, fcatania.
 
 #### Technologies:
 
